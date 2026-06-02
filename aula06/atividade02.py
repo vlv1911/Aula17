@@ -1,10 +1,19 @@
-from sqlalchemy import create_engine
-import pandas as pd
+# pip install sqlalchemy pymysql
+# pip install python-dotenv
 
-host = 'localhost'
-user = 'root'
-password = ''
-database = 'bd_atividade02'
+from sqlalchemy import create_engine
+# necessário para trabalhar com .env
+from dotenv import load_dotenv
+import pandas as pd
+import os
+
+load_dotenv()
+
+host = os.getenv('db_host')
+user = os.getenv('db_user')
+password = os.getenv('db_password')
+database = os.getenv('db_database')
+
 
 engine = create_engine(
     f'mysql+pymysql://{user}:{password}@{host}/{database}'
@@ -23,6 +32,22 @@ except Exception as e:
 
 
 
+# Merge: juntar dois dataframes:
+    df_merge1 = pd.merge(
+        df_clientes, df_pedidos, on='codigo_produto'
+    )
+
+# Merge: quando os nomes das colunas são diferentes é necessário ingormar o 
+    df_merge1 = pd.merge(
+        df_pedidos, 
+    )
+
+
+
+
+# ==================================================================================
+    
+# pip install python-dotenv
 
 
 
